@@ -1,0 +1,114 @@
+1) (POST) http://localhost:8080/WS_SPORYAL/authenticate
+   BODY
+   {"username":"sporyal_2020","password":"password"} => token bilgisi Döner
+
+2) http://localhost:8080/WS_SPORYAL/UserInsert
+   HEADER
+   Authorization = BEARER + token
+   BODY
+   {
+    "username":"ekaragoz",
+    "password":"ZW1pcg==", => MD5 Formatında
+    "date":"2020-03-26",
+    "status":"1"
+   }
+
+  SONUÇ 
+  {
+    "responseCode": 1,
+    "responseMesssage": "İşlem Başarılı"
+   }  
+  {
+    "responseCode": 0,  
+    "responseMesssage": "İşlem Başarısız"
+   }
+
+3) http://localhost:8080/WS_SPORYAL/UserLoginCheck
+   HEADER
+   Authorization = BEARER + token
+   username = ***
+   password = ***  => MD5 Formatında
+  
+  SONUÇ 
+  {
+    "responseCode": 1,  => UserId alanı
+    "responseMesssage": "İşlem Başarılı"
+   }  
+  {
+    "responseCode": 0,  
+    "responseMesssage": "İşlem Başarısız"
+   }
+
+4) http://localhost:8080/WS_SPORYAL/UserPasswordChange 
+   HEADER
+   Authorization = BEARER + token
+   id = ***
+   password = ***  => MD5 Formatında
+
+  Sonuç 
+  {
+    "responseCode": 1,
+    "responseMesssage": "İşlem Başarılı"
+   }
+
+  {
+    "responseCode": 0,  
+    "responseMesssage": "İşlem Başarısız"
+   }
+
+5) http://localhost:8080/WS_SPORYAL/BranchInsert
+   HEADER
+   Authorization = BEARER + token
+   BODY
+   {
+    "usersid" : {"id" : "1"},
+    "name":"Futbol",
+    "experience":"1",
+    "license":"true",
+    "date":"2020-03-30",
+    "status" : "1"
+   }
+
+  Sonuç
+  {
+    "responseCode": 1,
+    "responseMesssage": "İşlem Başarılı"
+   }
+
+  {
+    "responseCode": 0,  
+    "responseMesssage": "İşlem Başarısız"
+   }
+
+6) http://localhost:8080/WS_SPORYAL/BranchUpdate
+   HEADER
+   Authorization = BEARER + token
+   BODY
+   {
+    "id" : "1"
+    "usersid" : {"id" : "1"},
+    "name":"Futbol",
+    "experience":"1",
+    "license":"true",
+    "date":"2020-03-30",
+    "status" : "1"
+   }
+
+  Sonuç
+  {
+    "responseCode": 1,
+    "responseMesssage": "İşlem Başarılı"
+   }
+
+  {
+    "responseCode": 0,  
+    "responseMesssage": "İşlem Başarısız"
+   }
+
+7)http://localhost:8080/WS_SPORYAL/UserBranchList
+   HEADER
+   Authorization = BEARER + token
+   userid = 1
+
+   SONUÇ
+   Branch list
